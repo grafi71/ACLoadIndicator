@@ -19,7 +19,7 @@ int maxValue = 0;
 /* Calculate difference (maxValue-minValue) */
 int difference = 0;
 /* Linear values to be compared with calculated difference value to light appropriate number of LEDs */
-int scaled[] = {0, 80, 160, 240, 320, 400, 480, 560, 640, 720};
+int scale = 80;
 
 void setup() {
   for(int i=0; i<10; i++) {
@@ -37,6 +37,6 @@ void loop() {
   }
   difference = maxValue - minValue;
   for(int i=0; i<10; i++) {
-    digitalWrite(ledBarPins[i], (difference>=scaled[i])?LOW:HIGH);
+    digitalWrite(ledBarPins[i], (difference>=scale*i)?LOW:HIGH);
   }
 }
